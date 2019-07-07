@@ -1,5 +1,7 @@
 django==2.2
 djangorestframework==3.9
+psycopg2
 joblib
 numpy
-scikit-learn
+pandas
+scikit-learn==0.21.2
