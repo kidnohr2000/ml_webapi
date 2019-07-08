@@ -2,6 +2,14 @@
 
 ## IF
 
+### リクエスト
+
+### 基礎パラメータ
+
+||||
+
+### 変数用パラメータ
+
 |param|カラム名|型|備考|
 |:--|:--|:--|:--|
 |sepal_length||数値|ガクの長さ(cm)|
@@ -22,3 +30,8 @@
 docker-compose -f docker-compose.dev.yml up --build
 
 http://localhost:13081/api/iris?sepal_length=5.1&sepal_width=1&petal_length=1&petal_width=1
+
+
+## production 環境
+
+http://localhost:8000/api/iris?sepal_length=5.1&sepal_width=1&petal_length=1&petal_width=1

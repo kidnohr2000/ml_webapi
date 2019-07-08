@@ -13,17 +13,29 @@ services:
       - api
   postgres:
     image: 'postgres:latest'
+    build:
+      dockerfile: Dockerfile
+      context: ./postgres
     container_name: django.postgres
+    # command: 'postgres -c config_file="/etc/postgresql.conf"'
     environment:
       - TZ=JST-9
       - PGTZ=JST-9
       - TERM=xterm
+      # - POSTGRES_INITDB_ARGS="--encoding=UTF-8 --locale=ja_JP.UTF-8"
+    volumes:
+      # - database:/var/lib/postgresql/data
+      - ./postgres/initdb:/docker-entrypoint-initdb.d
+      # - ./postgres/postgresql.conf:/etc/postgresql.conf
+    ports:
+      - "5432:5432"
   api:
     build:
       dockerfile: Dockerfile
       context: ./server
     container_name: django.api
-    command: uwsgi --ini /app/server/django.ini
+    command: uwsgi --ini /app/django.ini
+    # command: bash -c "python /app/manage.py makemigrations api --settings=server.settings_prd && python /app/manage.py migrate --fake --settings=server.settings_prd && uwsgi --ini /app/django.ini"
     volumes:
       - ./server:/app
     environment:
@@ -33,6 +45,6 @@ services:
       - PGPASSWORD=postgres_password
       - PGPORT=5432
     ports:
-      - "8001"
+      - "8001:8001"
     depends_on:
       - postgres
