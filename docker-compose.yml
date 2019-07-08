@@ -1,16 +1,29 @@
 version: '3'
 services:
+  nginx:
+    image: nginx:1.17
+    container_name: django.nginx
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ./nginx/log:/var/log/nginx
+    depends_on:
+      - api
   postgres:
     image: 'postgres:latest'
+    container_name: django.postgres
     environment:
       - TZ=JST-9
       - PGTZ=JST-9
       - TERM=xterm
   api:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./server
-    command: python manage.py runserver 0.0.0.0:13081
+    container_name: django.api
+    command: uwsgi --ini /app/server/django.ini
     volumes:
       - ./server:/app
     environment:
@@ -20,4 +33,6 @@ services:
       - PGPASSWORD=postgres_password
       - PGPORT=5432
     ports:
-      - "13081:13081"
+      - "8001"
+    depends_on:
+      - postgres

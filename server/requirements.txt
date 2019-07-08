@@ -4,4 +4,5 @@ psycopg2
 joblib
 numpy
 pandas
+uwsgi
 scikit-learn==0.21.2
