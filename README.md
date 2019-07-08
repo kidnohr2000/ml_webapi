@@ -53,6 +53,7 @@ http://localhost:13081/api/iris?sepal_length=5.1&sepal_width=1&petal_length=1&pe
 docker-compose -f docker-compose.dev.yml up --build
 docker-compose run api ./manage.py makemigrations api
 docker-compose run api ./manage.py migrate
+docker-compose -f docker-compose.dev.yml up
 ```
 
 http://localhost:8000/api/iris?sepal_length=5.1&sepal_width=1&petal_length=1&petal_width=1
@@ -61,6 +62,6 @@ http://localhost:8000/api/iris?sepal_length=5.1&sepal_width=1&petal_length=1&pet
 ## 環境
 
 - Docker
-- Nginx
-- Posgresql
+- Nginx 1.17
+- Posgresql latest
 - Python3.6 (Django2.2, Django REST-framework)
