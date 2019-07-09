@@ -48,7 +48,7 @@
 |results|予測結果|オブジェクト||
 |results.label|ラベル|文字列||
 
-#### ラベルの値
+#### results.label の値
 
 |value|型|備考|
 |:--|:--|:--|
