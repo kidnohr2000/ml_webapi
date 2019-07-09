@@ -68,10 +68,10 @@ http://localhost:13081/api/sanity_check
 ## production 環境
 
 ```shell
-docker-compose -f docker-compose.dev.yml up --build
-docker-compose run api ./manage.py makemigrations api
-docker-compose run api ./manage.py migrate
-docker-compose -f docker-compose.dev.yml up
+docker-compose -f docker-compose.yml up --build
+docker-compose -f docker-compose.yml run api ./manage.py makemigrations api
+docker-compose -f docker-compose.yml run api ./manage.py migrate
+docker-compose -f docker-compose.yml up
 ```
 
 http://localhost:8000/api/iris?sepal_length=5.1&sepal_width=1&petal_length=1&petal_width=1
