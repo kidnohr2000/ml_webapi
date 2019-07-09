@@ -172,6 +172,8 @@ LOGGING = {
     }
 }
 
+CALLBACK = 'callback'
+
 # if DEBUG:
 #     # make all loggers use the console.
 #     for logger in LOGGING['loggers']:

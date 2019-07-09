@@ -18,4 +18,5 @@ from api import views
 
 urlpatterns = [
     path('api/iris', views.get_iris_label),
+    path('api/sanity_check', views.sanity_check),
 ]

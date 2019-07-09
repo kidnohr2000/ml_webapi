@@ -1,5 +1,6 @@
 django==2.2
 djangorestframework==3.9
+djangorestframework-jsonp
 psycopg2
 joblib
 numpy

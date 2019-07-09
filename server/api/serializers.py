@@ -6,3 +6,4 @@ class IrisSerializer(serializers.Serializer):
     sepal_width = serializers.FloatField()
     petal_length = serializers.FloatField()
     petal_width = serializers.FloatField()
+    callback = serializers.CharField(required=False, max_length=20)
